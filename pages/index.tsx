@@ -4,6 +4,9 @@ import { useUser } from '@auth0/nextjs-auth0'
 import { Pane, majorScale, minorScale, Spinner, ArrowLeftIcon, Button, WarningSignIcon } from 'evergreen-ui'
 import Link from 'next/link'
 import AuthButton from '../lib/hoagie-ui/AuthButton'
+//import DayPicker from 'react-day-picker';
+//import 'react-day-picker/lib/style.css';
+import DatePicker from '../pages/example.js';
 
 export default function Index() {
   const { user, error, isLoading } = useUser();
@@ -24,6 +27,7 @@ export default function Index() {
     </Pane>;
   else Profile = <AuthButton />
 
+  let selectedDate;
   const router = useRouter()
   useEffect(() => {
       const queryParams = new URLSearchParams(location.search)
@@ -81,6 +85,19 @@ export default function Index() {
           </Pane>
         </div>
         </Pane>
+        <Pane borderRadius={8}
+            textAlign="center" 
+            elevation={1} 
+            background="white" 
+            marginX={20} 
+            maxWidth="600px" 
+            width="100%"
+            paddingX="10px"
+            paddingTop={majorScale(5)}
+            paddingBottom={majorScale(7)}>
+              <DatePicker />
+        </Pane>
       </Pane>
+      
     );
 }
